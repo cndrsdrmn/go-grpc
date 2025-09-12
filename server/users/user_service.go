@@ -2,7 +2,6 @@ package users
 
 import (
 	"context"
-	"fmt"
 
 	pb "github.com/cndrsdrmn/go-grpc/protos/gen"
 	"google.golang.org/protobuf/types/known/emptypb"
@@ -47,7 +46,6 @@ func (srvs *userService) CreateUser(ctx context.Context, req *pb.CreateUserReque
 
 func (srvs *userService) DeleteUser(ctx context.Context, req *pb.DeleteUserRequest) (*pb.DeleteUserResponse, error) {
 	err := srvs.repo.DeleteUser(uint(req.Id))
-	fmt.Println(err)
 	if err != nil {
 		return &pb.DeleteUserResponse{Success: false}, err
 	}
